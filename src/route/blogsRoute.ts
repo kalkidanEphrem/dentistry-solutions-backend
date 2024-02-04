@@ -1,6 +1,7 @@
 import express from "express";
 import blogsController from "../controller/blogsController";
 
+//blogs router
 const router = express.Router();
 
 router.get("/", blogsController.getAllBlogs);
