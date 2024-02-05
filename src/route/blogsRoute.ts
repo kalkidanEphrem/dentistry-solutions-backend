@@ -2,12 +2,12 @@ import express from "express";
 import blogsController from "../controller/blogsController";
 
 //blogs router
-const router = express.Router();
+const blogRouter = express.Router();
 
-router.get("/", blogsController.getAllBlogs);
-router.get("/", blogsController.getBlogById);
-router.post("/", blogsController.createBlog);
-router.put("/:id", blogsController.updateBlog);
-router.delete("/:id", blogsController.deleteBlog);
+blogRouter.get("/", blogsController.getAllBlogs);
+blogRouter.get("/:id", blogsController.getBlogById);
+blogRouter.post("/", blogsController.createBlog);
+blogRouter.put("/:id", blogsController.updateBlog);
+blogRouter.delete("/:id", blogsController.deleteBlog);
 
-export default router;
+export default blogRouter;
