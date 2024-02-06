@@ -19,7 +19,7 @@ class BlogController {
             }
             catch (error) {
                 console.error(error);
-                return res.status(500).send('Internal Server Error');
+                return res.status(500).send("Internal Server Error");
             }
         });
     }
@@ -32,7 +32,7 @@ class BlogController {
             }
             catch (error) {
                 console.error(error);
-                return res.status(404).send('Blog not found');
+                return res.status(404).send("Blog not found");
             }
         });
     }
@@ -40,12 +40,12 @@ class BlogController {
         return __awaiter(this, void 0, void 0, function* () {
             const { title, discription, content, author } = req.body;
             try {
-                const newBlog = yield (0, postgres_1.sql) `INSERT INTO blogs (title, description, content, author) VALUES (${title}, ${discription}, ${content}, ${author}) RETURNING *`;
-                return res.status(201).json(newBlog);
+                yield (0, postgres_1.sql) `INSERT INTO blogs (title, description, content, author) VALUES (${title}, ${discription}, ${content}, ${author}) RETURNING *`;
+                return res.status(201).send("Blog created succesfully");
             }
             catch (error) {
                 console.error(error);
-                return res.status(500).send('Internal Server Error');
+                return res.status(500).send("Internal Server Error");
             }
         });
     }
@@ -54,12 +54,12 @@ class BlogController {
             const { id } = req.params;
             const { title, content } = req.body;
             try {
-                const updatedBlog = yield (0, postgres_1.sql) `UPDATE blogs SET title = $1, content = $2 WHERE id = $3 RETURNING *, (${title}, ${content}, ${id})`;
-                return res.status(200).json(updatedBlog);
+                yield (0, postgres_1.sql) `UPDATE blogs SET title = $1, content = $2 WHERE id = $3 RETURNING *, (${title}, ${content}, ${id})`;
+                return res.status(200).send("Blog update successfully");
             }
             catch (error) {
                 console.error(error);
-                return res.status(404).send('Blog not found');
+                return res.status(404).send("Blog not found");
             }
         });
     }
@@ -72,7 +72,7 @@ class BlogController {
             }
             catch (error) {
                 console.error(error);
-                return res.status(404).send('Blog not found');
+                return res.status(404).send("Blog not found");
             }
         });
     }
