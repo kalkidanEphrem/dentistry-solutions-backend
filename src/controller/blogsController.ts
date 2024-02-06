@@ -29,8 +29,7 @@ class BlogController {
 
     try {
       await sql`INSERT INTO blogs (title, description, content, author) VALUES (${title}, ${discription}, ${content}, ${author}) RETURNING *`;
-      const newBlog = { title, discription, content, author };
-      return res.status(201).json(newBlog);
+      return res.status(201).send("Blog created succesfully");
     } catch (error) {
       console.error(error);
       return res.status(500).send("Internal Server Error");
