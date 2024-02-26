@@ -7,7 +7,6 @@ import { urlencoded } from "body-parser";
 const app = express();
 const PORT = 5500;
 const connectionPoint = process.env.POSTGRES_URL;
-console.log(connectionPoint);
 
 const pool = new Pool({
   connectionString: connectionPoint,
