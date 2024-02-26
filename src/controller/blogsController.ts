@@ -4,9 +4,9 @@ import { sql } from "@vercel/postgres";
 class BlogController {
   async getAllBlogs(req: Request, res: Response) {
     try {
-      console.log("---- before blogs ----");
       const blogs = await sql`SELECT * FROM blogs`;
       return res.status(200).json(blogs);
+      
     } catch (error) {
       console.error(error);
       return res.status(500).send("Internal Server Error");
