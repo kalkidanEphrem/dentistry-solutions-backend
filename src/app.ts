@@ -1,5 +1,6 @@
 import express from "express";
 import blogRouter from "./route/blogsRoute";
+import usersRoute from "./route/usersRoute"
 import "dotenv/config";
 import { Pool } from "pg";
 import { urlencoded } from "body-parser";
@@ -18,6 +19,7 @@ const pool = new Pool({
 app.use(urlencoded({extended: true}));
 app.use(express.json())
 app.use("/blogs", blogRouter);
+app.use("/users", usersRoute)
 
 app.listen(PORT, async () => {
   await pool.connect();
